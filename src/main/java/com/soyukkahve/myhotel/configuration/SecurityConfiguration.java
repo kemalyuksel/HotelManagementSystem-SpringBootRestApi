@@ -12,7 +12,6 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableWebSecurity
@@ -54,12 +53,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http
                 .httpBasic()
                 .and()
-                .authorizeRequests().antMatchers("/api/home/**","/api/auth/**").permitAll()
-                .antMatchers(HttpMethod.GET,"/api/rooms/**").hasAnyAuthority("GUEST")
-                .antMatchers("/api/reservations/**","/api/rooms/**").hasAnyAuthority("EMPLOYEE")
-                .antMatchers("/api/admin/**","/api/departments/**","/api/employees/**").hasAnyAuthority("ADMIN")
-                .and()
                 .cors().and().csrf().disable()
+                .authorizeRequests().antMatchers("/","/v1/home/**","/v1/auth/**").permitAll()
+                .antMatchers(HttpMethod.GET,"/v1/rooms/**").hasAnyAuthority("GUEST")
+                .antMatchers("/v1/reservations/**","/v1/rooms/**").hasAnyAuthority("EMPLOYEE")
+                .antMatchers("/v1/admin/**","/v1/departments/**","/v1/employees/**").hasAnyAuthority("ADMIN")
+                .and()
                 .formLogin().disable();
 
     //.authenticated giriş yaptıysa erişebilir
