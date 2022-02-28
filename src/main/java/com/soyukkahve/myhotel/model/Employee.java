@@ -1,10 +1,16 @@
 package com.soyukkahve.myhotel.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
 @Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 public class Employee {
 
@@ -15,7 +21,10 @@ public class Employee {
     private String name;
     private String surname;
     private String phoneNumber;
+
+    @Column(unique=true)
     private String email;
+
     private double salary;
 
 
@@ -27,15 +36,4 @@ public class Employee {
     @JoinColumn(name="department_id")
     private Department department;
 
-    public Employee() {
-    }
-
-    public Employee(String name, String surname, String phoneNumber, String email, double salary, User user) {
-        this.name = name;
-        this.surname = surname;
-        this.phoneNumber = phoneNumber;
-        this.email = email;
-        this.salary = salary;
-        this.user = user;
-    }
 }

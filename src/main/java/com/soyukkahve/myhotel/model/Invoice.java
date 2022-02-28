@@ -1,12 +1,18 @@
 package com.soyukkahve.myhotel.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Date;
 
-@Entity
 @Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
 public class Invoice {
 
     @Id
@@ -21,12 +27,4 @@ public class Invoice {
     private Guest guest;
 
 
-    public Invoice(Date billingDate, double price, Guest guest) {
-        this.billingDate = billingDate;
-        this.price = price;
-        this.guest = guest;
-    }
-
-    public Invoice() {
-    }
 }

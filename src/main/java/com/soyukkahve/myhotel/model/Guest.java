@@ -1,13 +1,19 @@
 package com.soyukkahve.myhotel.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.List;
 import java.util.Set;
 
-@Entity
 @Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
 public class Guest {
 
     @Id
@@ -17,6 +23,8 @@ public class Guest {
     private String name;
     private String surname;
     private String phoneNumber;
+
+    @Column(unique=true)
     private String email;
 
     @ManyToOne(cascade=CascadeType.ALL)
@@ -29,14 +37,4 @@ public class Guest {
     @OneToMany(mappedBy = "guest")
     private List<Invoice> bills;
 
-    public Guest() {
-    }
-
-    public Guest(String name, String surname, String phoneNumber, String email, User user) {
-        this.name = name;
-        this.surname = surname;
-        this.phoneNumber = phoneNumber;
-        this.email = email;
-        this.user = user;
-    }
 }

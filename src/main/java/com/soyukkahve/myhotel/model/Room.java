@@ -1,12 +1,18 @@
 package com.soyukkahve.myhotel.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Set;
 
-@Entity
 @Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
 public class Room {
 
     @Id
@@ -16,8 +22,10 @@ public class Room {
     private String description;
     private String roomType;
     private String maintenance;
+
     @Column(nullable = false, columnDefinition = "TINYINT(1)")
     private boolean enabled;
+
     private double price;
     private int bedAmount;
 
