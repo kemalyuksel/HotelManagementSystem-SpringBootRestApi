@@ -9,7 +9,6 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 @Data
-@NoArgsConstructor
 public class GuestDto {
 
     private Long id;

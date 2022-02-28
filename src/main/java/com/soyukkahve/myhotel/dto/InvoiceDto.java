@@ -8,7 +8,6 @@ import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 @Data
-@NoArgsConstructor
 public class InvoiceDto {
 
     private Long id;

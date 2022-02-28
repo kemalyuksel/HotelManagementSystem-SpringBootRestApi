@@ -10,7 +10,6 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 @Data
-@NoArgsConstructor
 public class EmployeeDto {
 
     private Long id;
